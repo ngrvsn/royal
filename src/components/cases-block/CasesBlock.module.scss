@@ -1,0 +1,225 @@
+.wrapper {
+  text-align: left;
+  display: flex;
+
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 120px 128px 0px 128px;
+  @media (max-width: 1300px) {
+    padding: 130px 90px 0px 90px;
+  }
+  @media (max-width: 1100px) {
+    padding: 90px 66px 00px 66px;
+  }
+  @media (max-width: 650px) {
+    padding: 60px 20px 0px 20px;
+  }
+}
+
+.widhtWrapper {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.header {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%; /* 40px */
+  margin-bottom: 50px;
+  @media (max-width: 1300px) {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 920px) {
+    margin-bottom: 25px;
+    font-size: 26px;
+  }
+  @media (max-width: 650px) {
+    font-size: 20px;
+  }
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.content {
+  position: relative;
+}
+
+.expandButton {
+  display: none;
+
+  @media (max-width: 920px) {
+    display: flex;
+    position: absolute;
+    top: -15%;
+    right: -5%;
+    border: #e72c12;
+    padding: 15px;
+    border-radius: 100px;
+    background-color: #e72c12;
+    cursor: pointer;
+    align-items: stretch;
+  }
+  @media (max-width: 650px) {
+    right: 45%;
+    top: 85%;
+  }
+}
+
+.expandButton:hover {
+  transform: scale(1.05);
+}
+
+.expandIcon {
+  height: 40px;
+  width: 40px;
+  @media (max-width: 650px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
+}
+
+.content {
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.tab {
+  display: flex;
+  text-align: center;
+  padding: 17px 25px;
+  align-items: center;
+  border-bottom: 4px solid transparent;
+  background: #fff;
+  box-shadow: 0px 5px 19.9px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: border-bottom 0.3s ease-in-out;
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 20px */
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+}
+
+.tab.active,
+.extraTab.active {
+  border-bottom: 4px solid var(--orange, #e72c12);
+}
+
+.tab:last-child {
+  @media (max-width: 920px) {
+    display: none;
+  }
+  @media (max-width: 650px) {
+    display: flex;
+  }
+}
+
+.extraTab {
+  display: none;
+
+  @media (max-width: 920px) {
+    display: block;
+    padding: 17px 25px;
+    width: 30%;
+    margin-top: 14px;
+    align-items: center;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+    background: #fff;
+    box-shadow: 0px 5px 19.9px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+    transition: border-bottom 0.3s ease-in-out;
+    font-family: 'RF Dewi Extended';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 20px */
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+  }
+  @media (max-width: 650px) {
+    display: none;
+  }
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  @media (max-width: 650px) {
+  }
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modalImage {
+  width: 100%;
+  height: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.closeButton img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);
+}

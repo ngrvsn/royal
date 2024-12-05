@@ -1,0 +1,89 @@
+.wrapper {
+  padding: 66px 128px 65px 128px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: auto;
+  @media (max-width: 1300px) {
+    padding: 66px 90px 65px 90px;
+  }
+  @media (max-width: 1100px) {
+    padding: 66px 66px 65px 66px;
+  }
+  @media (max-width: 650px) {
+    padding: 60px 20px 60px 20px;
+  }
+}
+
+.header,
+.subtitle {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.header.visible,
+.subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%; /* 40px */
+  margin-bottom: 50px;
+  @media (max-width: 1300px) {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 920px) {
+    margin-bottom: 25px;
+    font-size: 26px;
+  }
+  @media (max-width: 650px) {
+    font-size: 20px;
+  }
+}
+
+.buttonSubtitleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 73px;
+  @media (max-width: 920px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 38px;
+  }
+  @media (max-width: 650px) {
+    gap: 25px;
+    align-items: stretch;
+  }
+}
+
+.subtitle {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 142%; /* 34.08px */
+  width: 70%;
+
+  @media (max-width: 1300px) {
+    font-size: 22px;
+    width: 60%;
+  }
+  @media (max-width: 920px) {
+    font-size: 20px;
+    width: 100%;
+  }
+  @media (max-width: 650px) {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,152 @@
+.wrapper {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 100px 128px 130px 128px;
+  @media (max-width: 1300px) {
+    padding: 100px 90px 120px 90px;
+  }
+  @media (max-width: 1100px) {
+    padding: 70px 66px 100px 66px;
+  }
+  @media (max-width: 650px) {
+    padding: 50px 20px 60px 20px;
+  }
+}
+
+.headerWrapper {
+  width: 100%;
+  text-align: left;
+  max-width: 1280px;
+  margin-bottom: 40px;
+  @media (max-width: 650px) {
+    margin-bottom: 20px;
+  }
+}
+
+.header {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 142%;
+  max-width: 660px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+
+  @media (max-width: 920px) {
+    font-size: 28px;
+  }
+  @media (max-width: 650px) {
+    font-size: 20px;
+  }
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdownList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  max-width: 1280px;
+  @media (max-width: 650px) {
+    gap: 15px;
+  }
+}
+
+.dropdownItem {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+  cursor: pointer;
+
+  background: #fff;
+  box-shadow: 0px 5px 18.5px 0px rgba(0, 0, 0, 0.03);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 32px 32px;
+  @media (max-width: 650px) {
+    padding: 10px 20px;
+  }
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.title {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 142%;
+  @media (max-width: 920px) {
+    font-size: 22px;
+  }
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
+}
+
+.icon {
+  transition: transform 0.3s ease;
+  @media (max-width: 650px) {
+    margin-left: 5px;
+  }
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.description {
+  color: #000;
+  font-family: 'RF Dewi';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 148%;
+
+  max-width: 900px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s ease,
+    opacity 1s ease;
+  @media (max-width: 920px) {
+    font-size: 18px;
+  }
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+}
+
+.descriptionOpen {
+  max-height: 500px;
+  opacity: 0.5;
+}

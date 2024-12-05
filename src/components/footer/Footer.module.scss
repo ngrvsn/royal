@@ -1,0 +1,194 @@
+.wrapper {
+  padding: 50px 131px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: #232323;
+  backdrop-filter: blur(8.149999618530273px);
+  @media (max-width: 1300px) {
+    padding: 50px 90px;
+  }
+  @media (max-width: 920px) {
+    padding: 50px 74px;
+  }
+  @media (max-width: 650px) {
+    padding: 50px 21px;
+  }
+}
+
+.desctopBlock {
+  display: flex;
+  justify-content: space-between;
+  gap: 81px;
+
+  max-width: 1280px;
+  align-items: center;
+  margin: auto;
+  @media (max-width: 1300px) {
+    gap: 40px;
+  }
+  @media (max-width: 680px) {
+    display: none;
+  }
+}
+
+.logoNavWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+
+  @media (max-width: 1150px) {
+    flex-direction: column;
+    gap: 34px;
+    flex: auto;
+  }
+}
+
+.infoButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+
+  @media (max-width: 1150px) {
+    flex-direction: column-reverse;
+    gap: 34px;
+  }
+}
+.mobileBlock {
+  display: none;
+
+  @media (max-width: 680px) {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+}
+
+.logoTelegramWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.infoMobileWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: flex-start;
+}
+
+.linksWrapper,
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  backdrop-filter: blur(16px);
+}
+
+.link {
+  text-decoration: none;
+
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: 'RF Dewi Extended';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%; /* 22.5px */
+}
+
+.info {
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Onest;
+  font-size: 19.788px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%; /* 24.735px */
+}
+
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  @media (max-width: 920px) {
+    width: 100%;
+  }
+}
+
+.telegramLink {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  padding: 15px 14px;
+
+  gap: 10px;
+  border-radius: 50px;
+  border: 0.819px solid rgba(255, 255, 255, 0);
+  background: var(--White, #fff);
+  backdrop-filter: blur(3.6850392818450928px);
+}
+
+.demoButton {
+  display: flex;
+  padding: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  @media (max-width: 920px) {
+    width: 100%;
+  }
+}
+
+.textButton {
+  color: var(--, #000);
+  text-align: center;
+  font-family: 'RF Dewi Extended';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%; /* 22.5px */
+}
+
+.bottomWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  max-width: 1280px;
+  align-items: center;
+  margin: auto;
+  margin-top: 34px;
+  @media (max-width: 680px) {
+    display: none;
+  }
+}
+
+.bottomParagraph {
+  color: #898989;
+  font-family: Onest;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 144%; /* 28.8px */
+}
+
+.privacyPolicy {
+  color: var(--White, #fff);
+  font-family: Onest;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 144%;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  margin-left: 10px;
+  @media (max-width: 680px) {
+    margin-left: 0px;
+  }
+}
