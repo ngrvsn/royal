@@ -1,0 +1,282 @@
+.wrapper {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 66px 128px 100px 128px;
+  @media (max-width: 1300px) {
+    padding: 66px 90px 120px 90px;
+  }
+  @media (max-width: 1100px) {
+    padding: 66px 66px 110px 66px;
+  }
+  @media (max-width: 650px) {
+    padding: 50px 20px 70px 20px;
+  }
+}
+
+.controlSection {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 84px;
+  @media (max-width: 1300px) {
+    gap: 64px;
+  }
+  @media (max-width: 1250px) {
+    gap: 50px;
+  }
+  @media (max-width: 1200px) {
+    gap: 35px;
+  }
+  @media (max-width: 1100px) {
+    gap: 18px;
+  }
+  @media (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.controlColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-start;
+  gap: 24px;
+  @media (max-width: 1100px) {
+    align-self: stretch;
+  }
+  @media (max-width: 650px) {
+    gap: 10px;
+  }
+}
+
+.controlColumn:nth-child(1) .box.visible {
+  animation: floatUpLeft 0.7s ease-out forwards;
+}
+
+.controlColumn:nth-child(3) .box.visible {
+  animation: floatUpRight 0.7s ease-out forwards;
+}
+
+.box {
+  padding: 17px 25px;
+  background: #fff;
+  box-shadow: 0px 5px 19.9px 0px rgba(0, 0, 0, 0.03);
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(0);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+  @media (max-width: 750px) {
+    padding: 17px;
+    height: 100px;
+  }
+  @media (max-width: 650px) {
+    height: auto;
+  }
+}
+
+.controlTitle {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 27.5px */
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
+}
+
+.controlDescription {
+  color: #000;
+  font-family: 'RF Dewi';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 148%; /* 31.394px */
+  opacity: 0.5;
+}
+
+.headerWrapper {
+  width: 100%;
+  margin: auto;
+  max-width: 1280px;
+  text-align: center;
+  margin-bottom: 65px;
+  @media (max-width: 1300px) {
+    margin-bottom: 50px;
+  }
+  @media (max-width: 650px) {
+    margin-bottom: 32px;
+  }
+}
+
+.secondHeaderWrapper {
+  max-width: 1100px;
+  @media (max-width: 1300px) {
+    margin-bottom: 28px;
+  }
+  @media (max-width: 650px) {
+    margin-bottom: 10px;
+  }
+}
+
+.header {
+  color: var(--, #000);
+  font-family: 'RF Dewi Extended';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%; /* 40px */
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+
+  @media (max-width: 920px) {
+    font-size: 28px;
+  }
+  @media (max-width: 650px) {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0 auto;
+  margin-top: 100px;
+  @media (max-width: 920px) {
+    gap: 22px;
+  }
+  @media (max-width: 920px) {
+    gap: 12px;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  @media (max-width: 920px) {
+    flex-direction: column;
+    width: 100%;
+    gap: 7px;
+  }
+  @media (max-width: 920px) {
+    gap: 8px;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+
+  @media (max-width: 920px) {
+    max-width: 100%;
+  }
+}
+
+.rightColumn {
+  flex: 1;
+
+  @media (max-width: 920px) {
+    max-width: 100%;
+  }
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  @media (max-width: 650px) {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.subtitle {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 142%; /* 34.08px */
+  @media (max-width: 920px) {
+    font-size: 22px;
+  }
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
+}
+
+.description {
+  color: #000;
+  font-family: 'RF Dewi';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 148%; /* 29.6px */
+  opacity: 0.5;
+  @media (max-width: 650px) {
+    font-size: 16px;
+  }
+}
+
+.row {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes floatUpLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatUpRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
