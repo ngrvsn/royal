@@ -1,5 +1,7 @@
+import React from 'react'
 import { Header } from '../header/Header'
 import { RedButton } from '@shared/red-button/RedButton'
+import { FormModal } from '@components/form-modal/FormModal'
 import FirstBubble from '@assets/images/first-bubble.png'
 import SecondBubble from '@assets/images/second-bubble.png'
 import ThirdBubble from '@assets/images/third-bubble.png'
@@ -11,6 +13,9 @@ import ThirdBubbleMobile from '@assets/images/third-bubble-mobile.png'
 import styles from './GetMarketBlock.module.scss'
 
 export const GetMarketBlock = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const buttonTitle = 'Получить свой маркет'
+
   return (
     <section className={styles.section}>
       <Header />
@@ -23,7 +28,12 @@ export const GetMarketBlock = () => {
             с полной кастомизацией под ваш бизнес
           </span>
         </h1>
-        <RedButton text='Получить свой маркет' />
+        <RedButton text={buttonTitle} onClick={() => setIsModalOpen(true)} />
+        <FormModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          buttonTitle={buttonTitle}
+        />
       </div>
       <div className={styles.imageContainer}>
         <img

@@ -1,9 +1,13 @@
+import React from 'react'
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
 import { RedButton } from '@shared/red-button/RedButton'
+import { FormModal } from '@components/form-modal/FormModal'
 
 import styles from './CalculateCostBlock.module.scss'
 
 export const CalculateCostBlock: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const buttonTitle = 'Получить демо'
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
@@ -13,7 +17,7 @@ export const CalculateCostBlock: React.FC = () => {
   })
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='cost'>
       <h2
         ref={(el) => el && headerRef.current.push(el)}
         className={styles.header}
@@ -30,7 +34,16 @@ export const CalculateCostBlock: React.FC = () => {
           Узнайте финальную стоимость вашего маркетплейса — получите четкую цену
           без доплат и скрытых платежей уже сейчас!
         </h3>
-        <RedButton text='Рассчитать стоимость' animate={true} />
+        <RedButton
+          text={buttonTitle}
+          onClick={() => setIsModalOpen(true)}
+          animate={true}
+        />
+        <FormModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          buttonTitle={buttonTitle}
+        />
       </div>
     </div>
   )

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import styles from './CheckCircle.module.scss'
 
-interface CheckCircleProps {
+interface ICheckCircleProps {
   delay: number
   id: string
 }
 
-export const CheckCircle: React.FC<CheckCircleProps> = ({ delay, id }) => {
+export const CheckCircle: React.FC<ICheckCircleProps> = ({ delay, id }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

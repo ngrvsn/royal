@@ -250,12 +250,16 @@
   position: absolute;
   bottom: 150px;
 
+  @media (max-width: 1400px) {
+    bottom: 200px;
+  }
+
   @media (max-width: 1220px) {
     transform: scale(0.95) !important;
-    bottom: 160px;
   }
-  @media (max-width: 1150px) {
+  @media (max-width: 1170px) {
     transform: scale(0.9) !important;
+    bottom: 215px;
   }
 }
 

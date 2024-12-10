@@ -1,16 +1,19 @@
 import { useRef, useEffect } from 'react'
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
-
 import styles from './RedButton.module.scss'
 
 interface IButtonProps {
   text: string
   animate?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  onClick?: () => void
 }
 
 export const RedButton: React.FC<IButtonProps> = ({
   text,
-  animate = false
+  animate = false,
+  type = 'button',
+  onClick
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
   const elementsRef = useIntersectionObserver({
@@ -26,6 +29,8 @@ export const RedButton: React.FC<IButtonProps> = ({
   return (
     <button
       ref={buttonRef}
+      type={type}
+      onClick={onClick}
       className={`${styles.button} ${animate ? styles.animated : ''}`}
     >
       <p className={styles.text}>{text}</p>

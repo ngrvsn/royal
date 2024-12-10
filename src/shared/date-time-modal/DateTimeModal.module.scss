@@ -1,0 +1,234 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal {
+  background: white;
+  padding: 25px 30px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  @media (max-width: 1300px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 650px) {
+    padding: 30px 20px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-family: 'RF Dewi Extended';
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  @media (max-width: 1300px) {
+    font-size: 20px;
+  }
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
+}
+
+.calendarSection {
+  margin-bottom: 20px;
+}
+
+.calendar {
+  width: 100%;
+
+  :global {
+    .react-calendar {
+      width: 100%;
+      border: none;
+      font-family: 'RF Dewi';
+
+      &__navigation {
+        margin-bottom: 5px;
+
+        button {
+          font-size: 14px;
+
+          &:disabled {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+
+      &__month-view__weekdays {
+        font-family: 'RF Dewi';
+        font-weight: normal;
+        font-size: 14px;
+
+        abbr {
+          text-decoration: none;
+          font-family: 'RF Dewi';
+        }
+      }
+
+      &__tile {
+        font-size: 14px;
+        font-family: 'RF Dewi';
+
+        &:enabled:hover,
+        &:enabled:focus {
+          background-color: #f8f8fa;
+        }
+
+        &--now {
+          background: #ffcbcb !important;
+          color: #e72c12 !important;
+        }
+
+        &--active {
+          background: #e72c12 !important;
+          color: white !important;
+        }
+
+        &:disabled {
+          background-color: #f0f0f0;
+          cursor: not-allowed;
+          color: #999;
+        }
+      }
+
+      &__month-view__days__day--weekend {
+        color: #999;
+      }
+    }
+  }
+}
+
+.timeSection {
+  display: flex;
+  flex-direction: column;
+
+  .subtitle {
+    margin-bottom: 10px;
+    font-family: 'RF Dewi Extended';
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+  }
+}
+
+.timePicker {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.timeInputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #d9d9d9;
+  transition: border-color 0.2s ease;
+
+  &.error {
+    border-color: #e72c12;
+  }
+
+  input {
+    width: 32px;
+    border: none;
+    text-align: center;
+    font-family: 'RF Dewi';
+    font-size: 16px;
+    outline: none;
+    padding: 0;
+
+    &::placeholder {
+      color: #d9d9d9;
+    }
+  }
+}
+
+.separator {
+  font-family: 'RF Dewi';
+  font-weight: 600;
+  font-size: 20px;
+  color: #000;
+}
+
+.errorMessage {
+  color: #e72c12;
+  font-family: 'RF Dewi';
+  font-size: 14px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.2s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.button {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-family: 'RF Dewi';
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  width: 50%;
+  text-align: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.cancelButton {
+  background: transparent;
+  border: 1px solid #d9d9d9;
+}
+
+.confirmButton {
+  background: #e72c12;
+  color: white;
+  border: none;
+}

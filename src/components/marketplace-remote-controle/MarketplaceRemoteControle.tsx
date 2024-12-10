@@ -33,7 +33,6 @@ const leftData = [
     title: 'Продавцы',
     description: 'Контроль, привлечение и мотивация продавцов'
   },
-
   {
     title: 'Финансы',
     description:
@@ -46,9 +45,8 @@ const leftData = [
   },
   {
     title: 'Логистика',
-    description: 'Выбор способа доставки и связь с перевозчиками'
+    description: 'Выбор способа доставки и связи с перевозчиками'
   },
-
   {
     title: 'Уведомления и push',
     description: 'Настройка e-mail и telegram-сообщений'
@@ -69,23 +67,51 @@ const rightData = [
     description:
       'Автоматический рост рейтинга и популярности платформы в поисковой выдаче'
   },
-
   {
     title: 'WEB Api',
     description: 'Свободная интеграция со всеми сервисами и платформами'
   },
-  { title: 'Продукт', description: 'Описание, условия, каталог, учет' }
+  {
+    title: 'Продукт',
+    description: 'Описание, условия, каталог, учет'
+  }
 ]
 
 export const MarketplaceRemoteControle: React.FC = () => {
   const [animationStage, setAnimationStage] = React.useState(0)
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1100)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  React.useEffect(() => {
+    if (isMobile) {
+      setAnimationStage(2)
+    }
+  }, [isMobile])
+
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
 
-  const boxRefs = useIntersectionObserver({
+  const boxRefsControlLeft = useIntersectionObserver({
     onEnter: (entry) => {
-      if (animationStage === 2) {
+      if (isMobile || animationStage === 2) {
+        entry.target.classList.add(styles.visible)
+      }
+    }
+  })
+
+  const boxRefsControlRight = useIntersectionObserver({
+    onEnter: (entry) => {
+      if (isMobile || animationStage === 2) {
         entry.target.classList.add(styles.visible)
       }
     }
@@ -106,11 +132,11 @@ export const MarketplaceRemoteControle: React.FC = () => {
         </h2>
       </div>
       <div className={styles.controlSection}>
-        <div className={styles.controlColumn}>
+        <div className={`${styles.controlColumn} ${styles.controlLeftColumn}`}>
           {leftData.map((item, index) => (
             <div
               key={index}
-              ref={(el) => (boxRefs.current[index] = el!)}
+              ref={(el) => el && boxRefsControlLeft.current.push(el)}
               className={styles.box}
             >
               <h3 className={styles.controlTitle}>{item.title}</h3>
@@ -118,12 +144,14 @@ export const MarketplaceRemoteControle: React.FC = () => {
             </div>
           ))}
         </div>
-        <RemotePhone onAnimationsComplete={setAnimationStage} />
-        <div className={styles.controlColumn}>
+
+        {!isMobile && <RemotePhone onAnimationsComplete={setAnimationStage} />}
+
+        <div className={`${styles.controlColumn} ${styles.controlRightColumn}`}>
           {rightData.map((item, index) => (
             <div
               key={index}
-              ref={(el) => (boxRefs.current[leftData.length + index] = el!)}
+              ref={(el) => el && boxRefsControlRight.current.push(el)}
               className={styles.box}
             >
               <h3 className={styles.controlTitle}>{item.title}</h3>
@@ -132,7 +160,7 @@ export const MarketplaceRemoteControle: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className={styles.content}>
+      <div className={styles.content} id='app'>
         <div className={styles.secondHeaderWrapper}>
           <h2
             ref={(el) => el && headerRef.current.push(el)}
@@ -146,17 +174,17 @@ export const MarketplaceRemoteControle: React.FC = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            ref={(el) => (rowRefs.current[index] = el!)}
+            ref={(el) => el && rowRefs.current.push(el)}
             className={styles.row}
           >
-            <div className={styles.leftColumn}>
+            <div className={styles.contentLeftColumn}>
               <CheckCircle
                 delay={index * 1000}
                 id={`circle-marketplace-${index}`}
               />
               <h3 className={styles.subtitle}>{item.title}</h3>
             </div>
-            <div className={styles.rightColumn}>
+            <div className={styles.contentRightColumn}>
               <p className={styles.description}>{item.description}</p>
             </div>
           </div>

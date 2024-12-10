@@ -1,10 +1,40 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { RedButton } from '@shared/red-button/RedButton'
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
+import {
+  NameInput,
+  PhoneInput,
+  AnimatedCheckbox
+} from '@shared/form-elements/FormElements'
+import { DateTimeModal } from '@shared/date-time-modal/DateTimeModal'
+import { sendToTelegram } from '../../services/telegram'
 
 import styles from './ConnectFormBlock.module.scss'
 
+interface IFormInputs {
+  name: string
+  phone: string
+  agreement: boolean
+  selectedDate?: Date
+}
+
+const formatDateTime = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat('ru', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+  return formatter.format(date)
+}
+
 export const ConnectFormBlock: React.FC = () => {
+  const [isDateTimeModalOpen, setIsDateTimeModalOpen] = React.useState(false)
+  const [formData, setFormData] = React.useState<IFormInputs | null>(null)
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
@@ -17,62 +47,69 @@ export const ConnectFormBlock: React.FC = () => {
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
 
-  const inputRefs = useIntersectionObserver({
-    onEnter: (entry) => entry.target.classList.add(styles.visible)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<IFormInputs>({
+    mode: 'onSubmit',
+    defaultValues: {
+      name: '',
+      phone: '',
+      agreement: false
+    }
   })
 
-  const checkboxRef = useIntersectionObserver({
-    onEnter: (entry) => entry.target.classList.add(styles.visible)
-  })
-
-  const [name, setName] = React.useState('')
-  const [phone, setPhone] = React.useState('')
-  const [isAgreed, setIsAgreed] = React.useState(false)
-
-  const formatPhone = (input: string) => {
-    const digits = input.replace(/\D/g, '').slice(0, 11)
-    if (!digits) return ''
-
-    let formatted = '+7 '
-    if (digits.length > 1) {
-      formatted += `(${digits.slice(1, 4)}`
-    }
-    if (digits.length >= 5) {
-      formatted += `) ${digits.slice(4, 7)}`
-    }
-    if (digits.length >= 8) {
-      formatted += `-${digits.slice(7, 9)}`
-    }
-    if (digits.length >= 10) {
-      formatted += `-${digits.slice(9, 11)}`
-    }
-    return formatted
+  const onSubmit = (data: IFormInputs) => {
+    setFormData(data)
+    setIsDateTimeModalOpen(true)
   }
 
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value
-    setPhone(formatPhone(input))
-  }
+  const handleDateTimeConfirm = async (date: Date) => {
+    if (formData) {
+      try {
+        setIsSubmitting(true)
 
-  const handlePhoneFocus = () => {
-    if (!phone) {
-      setPhone('+7 ')
-    }
-  }
+        const formattedData = {
+          title: 'Новая заявка',
+          source: 'Форма связи',
+          details: {
+            name: formData.name,
+            phone: formData.phone,
+            selectedDate: formatDateTime(date)
+          }
+        }
 
-  const handlePhoneBlur = () => {
-    if (phone === '+7 ') {
-      setPhone('')
+        await sendToTelegram(formattedData)
+
+        setIsDateTimeModalOpen(false)
+        setFormData(null)
+        reset({
+          name: '',
+          phone: '',
+          agreement: false
+        })
+      } catch (error) {
+        console.error('Form submission error:', error)
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log({ name, phone, isAgreed })
+  const handleModalClose = () => {
+    setIsDateTimeModalOpen(false)
+    setFormData(null)
+    reset({
+      name: '',
+      phone: '',
+      agreement: false
+    })
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='connect'>
       <div className={styles.leftColumn}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}
@@ -90,7 +127,7 @@ export const ConnectFormBlock: React.FC = () => {
         </p>
       </div>
       <div className={styles.rightColumn}>
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <p
             ref={(el) => el && formTitleRef.current.push(el)}
             className={styles.formTitle}
@@ -98,42 +135,48 @@ export const ConnectFormBlock: React.FC = () => {
             Получите индивидуальный маркетплейс, под ключ с неповторимым
             дизайном, быстрее и дешевле шаблонного варианта
           </p>
-          <input
-            type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder='Имя'
-            ref={(el) => el && inputRefs.current.push(el)}
-            className={styles.input}
+          <NameInput
+            registration={register('name', {
+              required: 'Введите имя'
+            })}
+            error={errors.name}
+            animate={true}
           />
-          <input
-            type='tel'
-            value={phone}
-            onFocus={handlePhoneFocus}
-            onBlur={handlePhoneBlur}
-            onChange={handlePhoneChange}
-            placeholder='Телефон'
-            ref={(el) => el && inputRefs.current.push(el)}
-            className={styles.input}
+          <PhoneInput
+            registration={register('phone', {
+              required: 'Введите номер телефона',
+              validate: (value) => {
+                if (!value || value === '+7 ') return 'Введите номер телефона'
+                if (value.replace(/\D/g, '').length < 11)
+                  return 'Введите корректный номер телефона'
+                return true
+              }
+            })}
+            error={errors.phone}
+            animate={true}
           />
-          <RedButton text='Выбрать удобное время' animate={true} />
-          <label
-            ref={(el) => el && checkboxRef.current.push(el)}
-            className={styles.checkboxLabel}
-          >
-            <input
-              type='checkbox'
-              checked={isAgreed}
-              onChange={(e) => setIsAgreed(e.target.checked)}
-              className={styles.checkbox}
-            />
-            <span className={styles.customCheckbox}></span>
-            <p className={styles.customCheckboxTitle}>
-              Я согласен на обработку персональных данных
-            </p>
-          </label>
+          <RedButton
+            text='Выбрать удобное время'
+            animate={true}
+            type='submit'
+          />
+          <AnimatedCheckbox
+            registration={register('agreement', {
+              required: 'Необходимо согласие на обработку данных'
+            })}
+            error={errors.agreement}
+            label='Я согласен на обработку персональных данных'
+            animate={true}
+          />
         </form>
       </div>
+
+      <DateTimeModal
+        isOpen={isDateTimeModalOpen}
+        onClose={handleModalClose}
+        onConfirm={handleDateTimeConfirm}
+        isSubmitting={isSubmitting}
+      />
     </div>
   )
 }

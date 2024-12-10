@@ -1,0 +1,147 @@
+.input,
+.checkboxLabel {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  box-shadow: 0px 5px 18.5px 0px rgba(0, 0, 0, 0.03);
+  display: flex;
+  padding: 20px 23px;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 142%;
+
+  &.error {
+    border-color: #e72c12;
+  }
+
+  @media (max-width: 920px) {
+    font-size: 18px;
+  }
+  @media (max-width: 650px) {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+.errorMessage {
+  color: #e72c12;
+  font-family: 'RF Dewi';
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+  transform: translateY(-10px);
+  opacity: 0;
+  animation: errorAppear 0.3s ease forwards;
+  @media (max-width: 650px) {
+    font-size: 12px;
+  }
+}
+
+@keyframes errorAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.checkboxWrapper {
+  text-align: left;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  &.error {
+    .customCheckbox {
+      border-color: #e72c12;
+    }
+  }
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.customCheckbox {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.3s;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    width: 6px;
+    height: 12px;
+    border: solid #808080;
+    border-width: 0 3px 3px 0;
+    display: block;
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.checkbox:checked + .customCheckbox {
+  border-color: #d9d9d9;
+
+  &::after {
+    opacity: 1;
+  }
+}
+
+.customCheckboxTitle {
+  opacity: 0.5;
+  margin: 0;
+  color: #000;
+  font-family: 'RF Dewi';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 148%;
+
+  @media (max-width: 920px) {
+    font-size: 18px;
+  }
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+}

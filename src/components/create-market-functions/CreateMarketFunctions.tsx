@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { FormModal } from '@components/form-modal/FormModal'
 import { RedButton } from '@shared/red-button/RedButton'
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
 
@@ -34,6 +34,8 @@ const data = [
 
 export const CreateMarketFunctions: React.FC = () => {
   const [activeId, setActiveId] = React.useState<number | null>(1)
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const buttonTitle = 'Создать свой маркетплейс'
 
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
@@ -48,7 +50,7 @@ export const CreateMarketFunctions: React.FC = () => {
   })
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id='work'>
       <h2
         ref={(el) => el && headerRef.current.push(el)}
         className={`${styles.header}`}
@@ -97,8 +99,17 @@ export const CreateMarketFunctions: React.FC = () => {
         ))}
       </div>
       <div className={styles.buttonWrapper}>
-        <RedButton text='Создать свой маркетплейс' animate={true} />
+        <RedButton
+          text={buttonTitle}
+          onClick={() => setIsModalOpen(true)}
+          animate={true}
+        />
       </div>
+      <FormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        buttonTitle={buttonTitle}
+      />
     </div>
   )
 }

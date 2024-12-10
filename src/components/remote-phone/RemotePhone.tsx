@@ -1,13 +1,13 @@
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
 import RemoteControl from '@assets/images/remote-control.png'
-import PhoneTumblerTop from '@assets/icons/phone-tumbler-top.svg'
+
 import styles from './RemotePhone.module.scss'
 
-interface RemotePhoneProps {
+interface IRemotePhoneProps {
   onAnimationsComplete: (stage: number) => void
 }
 
-export const RemotePhone: React.FC<RemotePhoneProps> = ({
+export const RemotePhone: React.FC<IRemotePhoneProps> = ({
   onAnimationsComplete
 }) => {
   const imageRef = useIntersectionObserver({
@@ -46,11 +46,7 @@ export const RemotePhone: React.FC<RemotePhoneProps> = ({
         alt='remote control image'
         className={styles.image}
       />
-      <img
-        src={PhoneTumblerTop}
-        alt='tumbler top icon'
-        className={styles.tumblerTop}
-      />
+
       <div className={styles.sliderWrapper}>
         {[1, 2, 3, 4, 5].map((id) => (
           <div
@@ -115,23 +111,6 @@ export const RemotePhone: React.FC<RemotePhoneProps> = ({
             </svg>
           </div>
         ))}
-      </div>
-      <div className={styles.tumblerWrapper}>
-        <img
-          src={PhoneTumblerTop}
-          alt='tumbler top icon'
-          className={styles.tumblerBottom}
-        />
-        <img
-          src={PhoneTumblerTop}
-          alt='tumbler top icon'
-          className={styles.tumblerBottom}
-        />
-        <img
-          src={PhoneTumblerTop}
-          alt='tumbler top icon'
-          className={styles.tumblerBottom}
-        />
       </div>
     </div>
   )

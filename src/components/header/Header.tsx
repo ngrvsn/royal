@@ -1,4 +1,6 @@
 import React from 'react'
+import { FormModal } from '@components/form-modal/FormModal'
+import { useScrollToElement } from '@hooks/useScrollToElement'
 import ArrowUpRightIcon from '@assets/icons/arrow-up-right.svg'
 import HeaderMobileIcon from '@assets/icons/header-mobile.svg'
 import CloseIcon from '@assets/icons/close-icon.svg'
@@ -8,6 +10,9 @@ import styles from './Header.module.scss'
 export const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [isClosing, setIsClosing] = React.useState(false)
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const scrollToElement = useScrollToElement()
+  const buttonTitle = 'Демо'
 
   const openMobileMenu = () => {
     setIsClosing(false)
@@ -26,24 +31,42 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerDesctop}>
         <nav className={styles.nav}>
-          <a href='#features' className={styles.link}>
+          <button
+            onClick={() => scrollToElement('work')}
+            className={styles.link}
+          >
             Возможности
-          </a>
-          <a href='#functional' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('functions')}
+            className={styles.link}
+          >
             Функционал
-          </a>
-          <a href='#cases' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('cases')}
+            className={styles.link}
+          >
             Кейсы
-          </a>
-          <a href='#prices' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('cost')}
+            className={styles.link}
+          >
             Цены
-          </a>
-          <a href='#contacts' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('connect')}
+            className={styles.link}
+          >
             Контакты
-          </a>
+          </button>
         </nav>
-        <button className={styles.demoButton}>
-          <p className={styles.textButton}>Демо</p>
+        <button
+          className={styles.demoButton}
+          onClick={() => setIsModalOpen(true)}
+        >
+          <p className={styles.textButton}>{buttonTitle}</p>
           <img
             src={ArrowUpRightIcon}
             alt='Arrow Icon'
@@ -72,8 +95,11 @@ export const Header = () => {
                 className={styles.closeIcon}
                 onClick={closeMobileMenu}
               />
-              <button className={styles.demoButton}>
-                <p className={styles.textButton}>Демо</p>
+              <button
+                className={styles.demoButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                <p className={styles.textButton}>{buttonTitle}</p>
                 <img
                   src={ArrowUpRightIcon}
                   alt='Arrow Icon'
@@ -82,25 +108,45 @@ export const Header = () => {
               </button>
             </div>
             <nav className={styles.mobileNav}>
-              <a href='#features' className={styles.mobileLink}>
+              <button
+                onClick={() => scrollToElement('work')}
+                className={styles.mobileLink}
+              >
                 Возможности
-              </a>
-              <a href='#functional' className={styles.mobileLink}>
+              </button>
+              <button
+                onClick={() => scrollToElement('functions')}
+                className={styles.mobileLink}
+              >
                 Функционал
-              </a>
-              <a href='#cases' className={styles.mobileLink}>
+              </button>
+              <button
+                onClick={() => scrollToElement('cases')}
+                className={styles.mobileLink}
+              >
                 Кейсы
-              </a>
-              <a href='#prices' className={styles.mobileLink}>
+              </button>
+              <button
+                onClick={() => scrollToElement('cost')}
+                className={styles.mobileLink}
+              >
                 Цены
-              </a>
-              <a href='#contacts' className={styles.mobileLink}>
+              </button>
+              <button
+                onClick={() => scrollToElement('connect')}
+                className={styles.mobileLink}
+              >
                 Контакты
-              </a>
+              </button>
             </nav>
           </div>
         )}
       </div>
+      <FormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        buttonTitle={buttonTitle}
+      />
     </header>
   )
 }

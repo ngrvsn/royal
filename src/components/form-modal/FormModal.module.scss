@@ -1,0 +1,185 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContainer {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+
+  @media (max-width: 900px) {
+    padding: 30px;
+  }
+  @media (max-width: 650px) {
+    padding: 34px 18px;
+  }
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #666;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  @media (max-width: 1300px) {
+    gap: 25px;
+  }
+  @media (max-width: 900px) {
+    gap: 18px;
+  }
+}
+
+.modalTitle {
+  color: #000;
+  font-family: 'RF Dewi Extended';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 142%; /* 34.08px */
+  text-align: left;
+
+  @media (max-width: 1300px) {
+    font-size: 20px;
+    max-width: 550px;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 18px;
+    max-width: 500px;
+  }
+  @media (max-width: 650px) {
+    font-size: 16px;
+    line-height: 134%;
+  }
+  @media (max-width: 550px) {
+    max-width: 400px;
+  }
+  @media (max-width: 450px) {
+    max-width: 320px;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  @media (max-width: 1300px) {
+    gap: 15px;
+  }
+}
+
+.calendarLink {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  color: #e72c12;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-bottom: 5px;
+
+  &:hover {
+    color: darken(#e72c12, 10%);
+  }
+}
+
+.calendarWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.calendarText {
+  color: #e72c12;
+  font-family: 'RF Dewi Extended';
+  text-align: left;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 25px */
+  @media (max-width: 1300px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px;
+  background: #e72c12;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'RF Dewi Extended';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%; /* 25px */
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
+  &:hover {
+    background: darken(#e72c12, 10%);
+  }
+
+  &:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.errorMessage {
+  color: #e72c12;
+  font-family: 'RF Dewi';
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+
+  @media (max-width: 650px) {
+    font-size: 12px;
+  }
+}
+
+.calendarIcon {
+  width: 24px;
+  height: auto;
+  @media (max-width: 900px) {
+    width: 20px;
+  }
+  @media (max-width: 650px) {
+    width: 18px;
+  }
+}

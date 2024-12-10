@@ -1,43 +1,69 @@
+import React from 'react'
 import RoyalIcon from '@assets/icons/royal-logo.svg'
 import ArrowUpRightBlackIcon from '@assets/icons/arrow-up-right-black.svg'
 import TelegramIcon from '@assets/icons/telegram-icon.svg'
+import { useScrollToElement } from '@hooks/useScrollToElement'
+import { FormModal } from '@components/form-modal/FormModal'
 
 import styles from './Footer.module.scss'
 
 export const Footer: React.FC = () => {
+  const scrollToElement = useScrollToElement()
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const buttonTitle = 'Посмотреть демо'
+
   return (
-    <div className={styles.wrapper}>
+    <footer className={styles.wrapper}>
       <section className={styles.desctopBlock}>
         <div className={styles.logoNavWrapper}>
           <img src={RoyalIcon} alt='Royal logo' className={styles.logo} />
           <nav className={styles.linksWrapper}>
-            <a href='#work' className={styles.link}>
+            <button
+              onClick={() => scrollToElement('work')}
+              className={styles.link}
+            >
               Преимущества работы с нами
-            </a>
-            <a href='#app' className={styles.link}>
+            </button>
+            <button
+              onClick={() => scrollToElement('app')}
+              className={styles.link}
+            >
               Мобильное приложение
-            </a>
-            <a href='#cost' className={styles.link}>
+            </button>
+            <button
+              onClick={() => scrollToElement('cost')}
+              className={styles.link}
+            >
               Стоимость
-            </a>
-            <a href='#cases' className={styles.link}>
+            </button>
+            <button
+              onClick={() => scrollToElement('cases')}
+              className={styles.link}
+            >
               Кейсы
-            </a>
+            </button>
           </nav>
         </div>
         <div className={styles.infoButtonsWrapper}>
           <div className={styles.infoWrapper}>
             <p className={styles.info}>Время работы: </p>
-            <p className={styles.info}>пн-пт 10-20:00</p>
+            <p className={styles.info}>пн-пт 10:00-20:00</p>
             <p className={styles.info}>8 (499) 755-66-77</p>
             <p className={styles.info}>royalmarketing@info</p>
           </div>
           <div className={styles.buttonsWrapper}>
-            <a href='#tglink' target='_blank' className={styles.telegramLink}>
+            <a
+              href='https://t.me/Royalsoft01'
+              target='_blank'
+              className={styles.telegramLink}
+            >
               <img src={TelegramIcon} alt='telegram' />
             </a>
-            <button className={styles.demoButton}>
-              <p className={styles.textButton}>Посмотреть демо</p>
+            <button
+              className={styles.demoButton}
+              onClick={() => setIsModalOpen(true)}
+            >
+              <p className={styles.textButton}>{buttonTitle}</p>
               <img
                 src={ArrowUpRightBlackIcon}
                 alt='Arrow Icon'
@@ -50,40 +76,61 @@ export const Footer: React.FC = () => {
       <section className={styles.mobileBlock}>
         <div className={styles.logoTelegramWrapper}>
           <img src={RoyalIcon} alt='Royal logo' className={styles.logo} />
-          <a href='#tglink' target='_blank' className={styles.telegramLink}>
+          <a
+            href='https://t.me/Royalsoft01'
+            target='_blank'
+            className={styles.telegramLink}
+          >
             <img src={TelegramIcon} alt='telegram' />
           </a>
         </div>
+
         <div className={styles.infoMobileWrapper}>
-          <a href='#work' className={styles.link}>
+          <button
+            onClick={() => scrollToElement('work')}
+            className={styles.link}
+          >
             Преимущества работы с нами
-          </a>
-          <a href='#app' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('app')}
+            className={styles.link}
+          >
             Мобильное приложение
-          </a>
-          <a href='#cost' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('cost')}
+            className={styles.link}
+          >
             Стоимость
-          </a>
-          <a href='#cases' className={styles.link}>
+          </button>
+          <button
+            onClick={() => scrollToElement('cases')}
+            className={styles.link}
+          >
             Кейсы
-          </a>
+          </button>
 
           <p className={styles.info}>Время работы: </p>
           <p className={styles.info}>пн-пт 10-20:00</p>
           <p className={styles.info}>8 (499) 755-66-77</p>
           <p className={styles.info}>royalmarketing@info</p>
         </div>
-        <button className={styles.demoButton}>
-          <p className={styles.textButton}>Посмотреть демо</p>
+        <button
+          className={styles.demoButton}
+          onClick={() => setIsModalOpen(true)}
+        >
+          <p className={styles.textButton}>{buttonTitle}</p>
           <img
             src={ArrowUpRightBlackIcon}
             alt='Arrow Icon'
             className={styles.arrow}
           />
         </button>
+
         <div className={styles.bottomParagraphMobile}>
           <p className={styles.bottomParagraph}>
-            ООО “Ройл Софт”. Юридический адрес: 141420, Московская область, г
+            ООО "Ройл Софт". Юридический адрес: 141420, Московская область, г
             Химки, мкр. Сходня, ул. Некрасова п. 2 стр. 77, офис 300. ОГРН:
             124500051988 от 23 апреля 2024 г. ИНН/КПП: 5047292421/504701001.
           </p>
@@ -98,7 +145,7 @@ export const Footer: React.FC = () => {
       </section>
       <div className={styles.bottomWrapper}>
         <p className={styles.bottomParagraph}>
-          ООО “Ройл Софт”. Юридический адрес: 141420, Московская область, г
+          ООО "Ройл Софт". Юридический адрес: 141420, Московская область, г
           Химки, мкр. Сходня, ул. Некрасова п. 2 стр. 77, офис 300. ОГРН:
           124500051988 от 23 апреля 2024 г. ИНН/КПП: 5047292421/504701001.
           <a
@@ -110,6 +157,11 @@ export const Footer: React.FC = () => {
           </a>
         </p>
       </div>
-    </div>
+      <FormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        buttonTitle={buttonTitle}
+      />
+    </footer>
   )
 }

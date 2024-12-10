@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-interface UseIntersectionObserverOptions extends IntersectionObserverInit {
+interface IUseIntersectionObserverOptions extends IntersectionObserverInit {
   onEnter?: (entry: IntersectionObserverEntry) => void
   onLeave?: (entry: IntersectionObserverEntry) => void
 }
@@ -9,7 +9,7 @@ export const useIntersectionObserver = ({
   onEnter,
   onLeave,
   ...observerOptions
-}: UseIntersectionObserverOptions = {}) => {
+}: IUseIntersectionObserverOptions = {}) => {
   const elementsRef = useRef<HTMLElement[]>([])
 
   useEffect(() => {

@@ -121,15 +121,19 @@
 }
 
 .subtitle {
-  max-width: 52%;
+  max-width: 60%;
   color: #000;
   font-family: 'RF Dewi Extended';
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 142%; /* 34.08px */
+  @media (max-width: 1300px) {
+    max-width: 65%;
+  }
   @media (max-width: 920px) {
     font-size: 22px;
+    max-width: 80%;
   }
   @media (max-width: 650px) {
     font-size: 18px;

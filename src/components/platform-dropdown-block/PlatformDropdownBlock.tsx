@@ -57,7 +57,7 @@ export const PlatformDropdownBlock: React.FC = () => {
   })
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='functions'>
       <div className={styles.headerWrapper}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}

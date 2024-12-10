@@ -4,6 +4,7 @@
   display: flex;
   margin-top: 50px;
   width: 100%;
+  gap: 0;
   justify-content: center;
   @media (max-width: 650px) {
     justify-content: flex-start;
@@ -30,6 +31,24 @@
   @media (max-width: 920px) {
     gap: 25px;
   }
+  @media (max-width: 760px) {
+    gap: 18px;
+  }
+  @media (max-width: 730px) {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr;
+    gap: 30px;
+  }
+}
+
+.link,
+.mobileLink {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }
 
 .link {
@@ -56,16 +75,14 @@
 }
 
 .textButton {
-  color: var(--White, #fff);
+  color: #fff;
   text-align: center;
   font-family: 'RF Dewi Extended';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 125%;
-
   margin: 0;
-  /* 22.5px */
 }
 
 .arrow {

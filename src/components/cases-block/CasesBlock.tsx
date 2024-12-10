@@ -42,7 +42,7 @@ export const CasesBlock: React.FC = () => {
   const toggleModal = () => setIsModalOpen(!isModalOpen)
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='cases'>
       <div className={styles.widhtWrapper}>
         <div className={styles.headerWrapper}>
           <h2
