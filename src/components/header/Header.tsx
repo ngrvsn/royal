@@ -27,6 +27,11 @@ export const Header = () => {
     }, 500)
   }
 
+  const handleNavClick = (elementId: string) => {
+    scrollToElement(elementId)
+    closeMobileMenu()
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.headerDesctop}>
@@ -97,7 +102,10 @@ export const Header = () => {
               />
               <button
                 className={styles.demoButton}
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setIsModalOpen(true)
+                  closeMobileMenu()
+                }}
               >
                 <p className={styles.textButton}>{buttonTitle}</p>
                 <img
@@ -109,31 +117,31 @@ export const Header = () => {
             </div>
             <nav className={styles.mobileNav}>
               <button
-                onClick={() => scrollToElement('work')}
+                onClick={() => handleNavClick('work')}
                 className={styles.mobileLink}
               >
                 Возможности
               </button>
               <button
-                onClick={() => scrollToElement('functions')}
+                onClick={() => handleNavClick('functions')}
                 className={styles.mobileLink}
               >
                 Функционал
               </button>
               <button
-                onClick={() => scrollToElement('cases')}
+                onClick={() => handleNavClick('cases')}
                 className={styles.mobileLink}
               >
                 Кейсы
               </button>
               <button
-                onClick={() => scrollToElement('cost')}
+                onClick={() => handleNavClick('cost')}
                 className={styles.mobileLink}
               >
                 Цены
               </button>
               <button
-                onClick={() => scrollToElement('connect')}
+                onClick={() => handleNavClick('connect')}
                 className={styles.mobileLink}
               >
                 Контакты
