@@ -251,15 +251,17 @@
   bottom: 150px;
 
   @media (max-width: 1400px) {
-    bottom: 200px;
+    bottom: 220px;
   }
 
-  @media (max-width: 1220px) {
+  @media (max-width: 1350px) {
+    bottom: 230px;
     transform: scale(0.95) !important;
   }
+
   @media (max-width: 1170px) {
     transform: scale(0.9) !important;
-    bottom: 215px;
+    bottom: 250px;
   }
 }
 

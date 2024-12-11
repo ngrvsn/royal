@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  base: '/royal/',
+  base: '/royal',
   plugins: [react()],
   resolve: {
     alias: {
@@ -12,5 +12,17 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@shared': path.resolve(__dirname, './src/shared')
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'market-block': ['/src/components/get-market-block/GetMarketBlock']
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: ['@components/get-market-block/GetMarketBlock']
   }
 })

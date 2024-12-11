@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react'
-import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
 import styles from './RedButton.module.scss'
 
 interface IButtonProps {
@@ -16,15 +15,30 @@ export const RedButton: React.FC<IButtonProps> = ({
   onClick
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
-  const elementsRef = useIntersectionObserver({
-    onEnter: (entry) => entry.target.classList.add(styles.visible)
-  })
 
   useEffect(() => {
-    if (buttonRef.current && animate) {
-      elementsRef.current.push(buttonRef.current)
+    if (!animate || !buttonRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(buttonRef.current)
+
+    return () => {
+      if (buttonRef.current) {
+        observer.unobserve(buttonRef.current)
+      }
     }
-  }, [elementsRef, animate])
+  }, [animate])
 
   return (
     <button

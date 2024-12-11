@@ -45,6 +45,8 @@ export const GetMarketBlock = () => {
           src={SecondBubble}
           alt='second bubble'
           className={`${styles.image} ${styles.image2}`}
+          fetchPriority='high'
+          loading='eager'
         />
         <img
           src={ThirdBubble}
@@ -67,6 +69,7 @@ export const GetMarketBlock = () => {
           src={SecondBubbleMobile}
           alt='second bubble'
           className={`${styles.image} ${styles.imageSecondMobile}`}
+          fetchPriority='high'
         />
         <img
           src={ThirdBubbleMobile}
