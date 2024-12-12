@@ -18,7 +18,7 @@ const TinderCase2x = () =>
 
 import styles from './CasesBlock.module.scss'
 
-interface CaseItem {
+interface ICaseItem {
   id: number
   image: string
   getImage2x: () => Promise<string>
@@ -42,7 +42,7 @@ export const CasesBlock: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
   const [highResImage, setHighResImage] = React.useState<string | null>(null)
 
-  const data: CaseItem[] = [
+  const data: ICaseItem[] = [
     {
       id: 1,
       image: AppCase,
@@ -92,7 +92,7 @@ export const CasesBlock: React.FC = () => {
   const toggleModal = () => setIsModalOpen(!isModalOpen)
 
   return (
-    <div className={styles.wrapper} id='cases'>
+    <section className={styles.wrapper} id='cases'>
       <div className={styles.widhtWrapper}>
         <div className={styles.headerWrapper}>
           <h2
@@ -166,6 +166,6 @@ export const CasesBlock: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+    </section>
   )
 }

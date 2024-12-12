@@ -1,10 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import sass from 'sass'
 
 export default defineConfig({
   base: '/royal',
   plugins: [react()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        implementation: sass
+      }
+    }
+  },
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, './src/components'),

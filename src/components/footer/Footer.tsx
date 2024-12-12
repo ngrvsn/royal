@@ -48,8 +48,12 @@ export const Footer: React.FC = () => {
           <div className={styles.infoWrapper}>
             <p className={styles.info}>Время работы: </p>
             <p className={styles.info}>пн-пт 10:00-20:00</p>
-            <p className={styles.info}>8 (499) 755-66-77</p>
-            <p className={styles.info}>royalmarketing@info</p>
+            <a href='tel:+74997556677' className={styles.link}>
+              8 (499) 755-66-77
+            </a>
+            <a href='mailto:royalmarketing@info' className={styles.link}>
+              royalmarketing@info
+            </a>
           </div>
           <div className={styles.buttonsWrapper}>
             <a
@@ -112,9 +116,13 @@ export const Footer: React.FC = () => {
           </button>
 
           <p className={styles.info}>Время работы: </p>
-          <p className={styles.info}>пн-пт 10-20:00</p>
-          <p className={styles.info}>8 (499) 755-66-77</p>
-          <p className={styles.info}>royalmarketing@info</p>
+          <p className={styles.info}>пн-пт 10:00-20:00</p>
+          <a href='tel:+74997556677' className={styles.link}>
+            8 (499) 755-66-77
+          </a>
+          <a href='mailto:royalmarketing@info' className={styles.link}>
+            royalmarketing@info
+          </a>
         </div>
         <button
           className={styles.demoButton}
@@ -148,11 +156,7 @@ export const Footer: React.FC = () => {
           ООО "Ройл Софт". Юридический адрес: 141420, Московская область, г
           Химки, мкр. Сходня, ул. Некрасова п. 2 стр. 77, офис 300. ОГРН:
           124500051988 от 23 апреля 2024 г. ИНН/КПП: 5047292421/504701001.
-          <a
-            href='/privacy-policy'
-            target='_blank'
-            className={styles.privacyPolicy}
-          >
+          <a href='#' target='_blank' className={styles.privacyPolicy}>
             Политика конфиденциальности
           </a>
         </p>

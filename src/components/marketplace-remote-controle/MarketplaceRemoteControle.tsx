@@ -122,7 +122,7 @@ export const MarketplaceRemoteControle: React.FC = () => {
   })
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.headerWrapper}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}
@@ -190,6 +190,6 @@ export const MarketplaceRemoteControle: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

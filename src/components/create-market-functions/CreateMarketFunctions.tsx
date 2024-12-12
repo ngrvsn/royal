@@ -50,7 +50,7 @@ export const CreateMarketFunctions: React.FC = () => {
   })
 
   return (
-    <div className={styles.container} id='work'>
+    <section className={styles.container} id='work'>
       <h2
         ref={(el) => el && headerRef.current.push(el)}
         className={`${styles.header}`}
@@ -110,6 +110,6 @@ export const CreateMarketFunctions: React.FC = () => {
         onClose={() => setIsModalOpen(false)}
         buttonTitle={buttonTitle}
       />
-    </div>
+    </section>
   )
 }

@@ -41,7 +41,7 @@ export const RealiseIdea: React.FC = () => {
   })
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.content}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}
@@ -62,10 +62,7 @@ export const RealiseIdea: React.FC = () => {
               ref={(el) => el && rowsRef.current.push(el)}
             ></div>
             <div className={styles.leftColumn}>
-              <CheckCircle
-                delay={index * 1000}
-                id={`circle-realise-${index}`}
-              />
+              <CheckCircle delay={index * 800} id={`circle-realise-${index}`} />
               <h3 className={styles.subtitle}>{item.title}</h3>
             </div>
             <div className={styles.rightColumn}>
@@ -74,6 +71,6 @@ export const RealiseIdea: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

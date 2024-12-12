@@ -29,6 +29,11 @@
   font-weight: 700;
   line-height: 125%; /* 40px */
   margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
   @media (max-width: 1300px) {
     margin-bottom: 40px;
   }
@@ -39,11 +44,6 @@
   @media (max-width: 650px) {
     font-size: 20px;
   }
-  opacity: 0;
-  transform: translateY(50px);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
 }
 
 .content {
@@ -123,7 +123,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 125%; /* 20px */
+  line-height: 125%;
   @media (max-width: 650px) {
     font-size: 14px;
   }

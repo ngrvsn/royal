@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -101,10 +103,6 @@
   cursor: pointer;
   transition: color 0.2s;
   margin-bottom: 5px;
-
-  &:hover {
-    color: darken(#e72c12, 10%);
-  }
 }
 
 .calendarWrapper {
@@ -150,7 +148,7 @@
     font-size: 14px;
   }
   &:hover {
-    background: darken(#e72c12, 10%);
+    background: color.scale(#e72c12, $lightness: -20.4819277108%);
   }
 
   &:disabled {

@@ -8,6 +8,7 @@ import styles from './CalculateCostBlock.module.scss'
 export const CalculateCostBlock: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
   const buttonTitle = 'Получить демо'
+
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
@@ -17,7 +18,7 @@ export const CalculateCostBlock: React.FC = () => {
   })
 
   return (
-    <div className={styles.wrapper} id='cost'>
+    <section className={styles.wrapper} id='cost'>
       <h2
         ref={(el) => el && headerRef.current.push(el)}
         className={styles.header}
@@ -45,6 +46,6 @@ export const CalculateCostBlock: React.FC = () => {
           buttonTitle={buttonTitle}
         />
       </div>
-    </div>
+    </section>
   )
 }

@@ -62,6 +62,15 @@ export const DateTimeModal: React.FC<IDateTimeModalProps> = ({
 
   if (!isOpen) return null
 
+  const validateTime = (hours: string, minutes: string) => {
+    const hoursNum = parseInt(hours)
+    const minutesNum = parseInt(minutes)
+    const time = hoursNum * 60 + minutesNum
+    const startTime = 10 * 60
+    const endTime = 20 * 60
+    return time >= startTime && time <= endTime
+  }
+
   const handleModalClick = (e: React.MouseEvent) => {
     e.stopPropagation()
   }
@@ -73,15 +82,6 @@ export const DateTimeModal: React.FC<IDateTimeModalProps> = ({
   }
 
   const formatTimeValue = (value: string) => value.padStart(2, '0')
-
-  const validateTime = (hours: string, minutes: string) => {
-    const hoursNum = parseInt(hours)
-    const minutesNum = parseInt(minutes)
-    const time = hoursNum * 60 + minutesNum
-    const startTime = 10 * 60
-    const endTime = 20 * 60
-    return time >= startTime && time <= endTime
-  }
 
   const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors()

@@ -27,7 +27,7 @@ export const CreateMarketStartSell: React.FC = () => {
   })
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.headerWrapper}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}
@@ -53,6 +53,6 @@ export const CreateMarketStartSell: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

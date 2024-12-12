@@ -19,17 +19,6 @@ interface IFormInputs {
   selectedDate?: Date
 }
 
-const formatDateTime = (date: Date) => {
-  const formatter = new Intl.DateTimeFormat('ru', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
-  return formatter.format(date)
-}
-
 export const ConnectFormBlock: React.FC = () => {
   const [isDateTimeModalOpen, setIsDateTimeModalOpen] = React.useState(false)
   const [formData, setFormData] = React.useState<IFormInputs | null>(null)
@@ -57,10 +46,20 @@ export const ConnectFormBlock: React.FC = () => {
     defaultValues: {
       name: '',
       phone: '',
-      agreement: false
+      agreement: true
     }
   })
 
+  const formatDateTime = (date: Date) => {
+    const formatter = new Intl.DateTimeFormat('ru', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+    return formatter.format(date)
+  }
   const onSubmit = (data: IFormInputs) => {
     setFormData(data)
     setIsDateTimeModalOpen(true)
@@ -109,7 +108,7 @@ export const ConnectFormBlock: React.FC = () => {
   }
 
   return (
-    <div className={styles.wrapper} id='connect'>
+    <section className={styles.wrapper} id='connect'>
       <div className={styles.leftColumn}>
         <h2
           ref={(el) => el && headerRef.current.push(el)}
@@ -177,6 +176,6 @@ export const ConnectFormBlock: React.FC = () => {
         onConfirm={handleDateTimeConfirm}
         isSubmitting={isSubmitting}
       />
-    </div>
+    </section>
   )
 }
