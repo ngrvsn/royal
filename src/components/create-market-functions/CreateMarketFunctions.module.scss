@@ -21,7 +21,7 @@
 }
 .header {
   text-align: left;
-  color: var(--, #000);
+  color: #000;
   font-family: 'RF Dewi Extended';
   font-size: 32px;
   font-style: normal;
@@ -146,7 +146,7 @@
   @media (max-width: 920px) {
     margin-top: 50px;
   }
-  @media (max-width: 650зч) {
+  @media (max-width: 650px) {
     margin-top: 40px;
   }
 }
