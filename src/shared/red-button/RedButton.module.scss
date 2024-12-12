@@ -11,6 +11,10 @@
   overflow: hidden;
   opacity: 1;
   transform: translateY(0);
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   transition:
     opacity 0.5s ease-out,
     transform 0.5s ease-out;

@@ -132,6 +132,10 @@
   border: 0.819px solid rgba(255, 255, 255, 0);
   background: #fff;
   backdrop-filter: blur(3.6850392818450928px);
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .demoButton {

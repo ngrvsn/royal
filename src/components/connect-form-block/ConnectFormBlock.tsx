@@ -8,7 +8,7 @@ import {
   AnimatedCheckbox
 } from '@shared/form-elements/FormElements'
 import { DateTimeModal } from '@shared/date-time-modal/DateTimeModal'
-import { sendToTelegram } from '../../services/telegram'
+import { sendToTelegram } from '@services/telegram'
 
 import styles from './ConnectFormBlock.module.scss'
 

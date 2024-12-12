@@ -7,7 +7,23 @@ import TinderCase from '@assets/images/tinder-case.png'
 import ExpandIcon from '@assets/icons/expand-icon.svg'
 import CloseIcon from '@assets/icons/close-icon.svg'
 
+const AppCase2x = () =>
+  import('@assets/images/app-case2x.png').then((module) => module.default)
+const ShopCase2x = () =>
+  import('@assets/images/shop-case2x.png').then((module) => module.default)
+const MarketCase2x = () =>
+  import('@assets/images/market-case2x.png').then((module) => module.default)
+const TinderCase2x = () =>
+  import('@assets/images/tinder-case2x.png').then((module) => module.default)
+
 import styles from './CasesBlock.module.scss'
+
+interface CaseItem {
+  id: number
+  image: string
+  getImage2x: () => Promise<string>
+  title: string
+}
 
 export const CasesBlock: React.FC = () => {
   const headerRef = useIntersectionObserver({
@@ -24,12 +40,33 @@ export const CasesBlock: React.FC = () => {
 
   const [activeId, setActiveId] = React.useState<number>(1)
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
+  const [highResImage, setHighResImage] = React.useState<string | null>(null)
 
-  const data = [
-    { id: 1, image: AppCase, title: 'Интернет-магазин' },
-    { id: 2, image: ShopCase, title: 'Мобильное приложение' },
-    { id: 3, image: MarketCase, title: 'Маркет услуг' },
-    { id: 4, image: TinderCase, title: 'Тиндер для лошадей' }
+  const data: CaseItem[] = [
+    {
+      id: 1,
+      image: AppCase,
+      getImage2x: AppCase2x,
+      title: 'Интернет-магазин'
+    },
+    {
+      id: 2,
+      image: ShopCase,
+      getImage2x: ShopCase2x,
+      title: 'Мобильное приложение'
+    },
+    {
+      id: 3,
+      image: MarketCase,
+      getImage2x: MarketCase2x,
+      title: 'Маркет услуг'
+    },
+    {
+      id: 4,
+      image: TinderCase,
+      getImage2x: TinderCase2x,
+      title: 'Тиндер для лошадей'
+    }
   ]
 
   React.useEffect(() => {
@@ -38,6 +75,19 @@ export const CasesBlock: React.FC = () => {
       img.src = item.image
     })
   }, [])
+
+  React.useEffect(() => {
+    if (isModalOpen) {
+      const activeItem = data.find((item) => item.id === activeId)
+      if (activeItem) {
+        activeItem.getImage2x().then((src) => {
+          setHighResImage(src)
+        })
+      }
+    } else {
+      setHighResImage(null)
+    }
+  }, [isModalOpen, activeId])
 
   const toggleModal = () => setIsModalOpen(!isModalOpen)
 
@@ -91,6 +141,7 @@ export const CasesBlock: React.FC = () => {
               src={ExpandIcon}
               alt='Увеличение изображения'
               className={styles.expandIcon}
+              loading='lazy'
             />
           </button>
         </div>
@@ -103,12 +154,14 @@ export const CasesBlock: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={data.find((item) => item.id === activeId)?.image}
+              src={
+                highResImage || data.find((item) => item.id === activeId)?.image
+              }
               alt={data.find((item) => item.id === activeId)?.title}
               className={styles.modalImage}
             />
             <button className={styles.closeButton} onClick={toggleModal}>
-              <img src={CloseIcon} alt='Закрыть' />
+              <img src={CloseIcon} alt='Закрыть' loading='lazy' />
             </button>
           </div>
         </div>
