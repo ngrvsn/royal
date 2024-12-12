@@ -1,3 +1,4 @@
+import { Header } from '@components/header/Header'
 import { GetMarketBlock } from '@components/get-market-block/GetMarketBlock'
 import { CreateMarketPlatform } from '@components/create-market-platform/CreateMarketPlatform'
 import { CreateMarketFunctions } from '@components/create-market-functions/CreateMarketFunctions'
@@ -16,6 +17,7 @@ import './App.css'
 function App() {
   return (
     <main>
+      <Header />
       <GetMarketBlock />
       <CreateMarketPlatform />
       <CreateMarketFunctions />

@@ -154,7 +154,7 @@
     left: 0;
     width: 100%;
     background-color: #7b7b7b;
-    transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 10px 10px 0 0;
   }
 }
@@ -166,7 +166,7 @@
   background-size: contain;
   position: absolute;
   bottom: 0;
-  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
 
@@ -287,11 +287,11 @@
 
 .orbit.visible {
   .orbitPath {
-    animation: fillOrbit 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: fillOrbit 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   .orbitDot {
-    animation: moveOrbitDot 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: moveOrbitDot 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 }
 

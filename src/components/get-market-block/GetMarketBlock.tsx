@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header } from '../header/Header'
 import { RedButton } from '@shared/red-button/RedButton'
 import { FormModal } from '@components/form-modal/FormModal'
 import FirstBubble from '@assets/images/first-bubble.png'
@@ -18,7 +17,6 @@ export const GetMarketBlock = () => {
 
   return (
     <section className={styles.section}>
-      <Header />
       <div className={styles.columnDiv}>
         <h1 className={styles.header}>
           <span className={styles.headerTop}>

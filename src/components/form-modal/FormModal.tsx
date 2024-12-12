@@ -59,7 +59,7 @@ export const FormModal: React.FC<IFormModalProps> = ({
     defaultValues: {
       name: '',
       phone: '',
-      agreement: false
+      agreement: true
     }
   })
 

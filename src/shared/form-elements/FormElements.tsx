@@ -133,7 +133,7 @@ export const AnimatedCheckbox: React.FC<AnimatedCheckboxProps> = ({
       >
         <input type='checkbox' {...registration} className={styles.checkbox} />
         <span className={styles.customCheckbox}></span>
-        <p className={styles.customCheckboxTitle}>{label} *</p>
+        <p className={styles.customCheckboxTitle}>{label}</p>
       </label>
       {error && <span className={styles.errorMessage}>{error.message}</span>}
     </div>

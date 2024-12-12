@@ -104,7 +104,7 @@ export const ConnectFormBlock: React.FC = () => {
     reset({
       name: '',
       phone: '',
-      agreement: false
+      agreement: true
     })
   }
 

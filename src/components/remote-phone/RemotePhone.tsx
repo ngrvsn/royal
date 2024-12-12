@@ -24,11 +24,11 @@ export const RemotePhone: React.FC<IRemotePhoneProps> = ({
         })
         setTimeout(() => {
           onAnimationsComplete(2)
-        }, 2500)
-      }, 1500)
+        }, 1300)
+      }, 1300)
       setTimeout(() => {
         onAnimationsComplete(2)
-      }, 5000)
+      }, 3600)
     }
   })
 

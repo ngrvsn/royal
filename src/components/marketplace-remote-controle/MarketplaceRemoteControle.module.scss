@@ -59,14 +59,6 @@
   }
 }
 
-.controlLeftColumn .box.visible {
-  animation: floatUpLeft 0.7s ease-out forwards;
-}
-
-.controlRightColumn .box.visible {
-  animation: floatUpRight 0.7s ease-out forwards;
-}
-
 .box {
   padding: 17px 25px;
   background: #fff;
@@ -288,11 +280,11 @@
 }
 
 .controlLeftColumn .box.visible {
-  animation: floatUpLeft 0.7s ease-out forwards;
+  animation: floatUpLeft 0.5s ease-out forwards;
 }
 
 .controlRightColumn .box.visible {
-  animation: floatUpRight 0.7s ease-out forwards;
+  animation: floatUpRight 0.5s ease-out forwards;
 }
 
 @keyframes floatUpLeft {

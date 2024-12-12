@@ -48,6 +48,8 @@ const data = [
 ]
 
 export const PlatformDropdownBlock: React.FC = () => {
+  const [openIndex, setOpenIndex] = React.useState(0)
+
   const headerRef = useIntersectionObserver({
     onEnter: (entry) => entry.target.classList.add(styles.visible)
   })
@@ -73,7 +75,20 @@ export const PlatformDropdownBlock: React.FC = () => {
             ref={(el) => (dropdownItemsRef.current[index] = el!)}
             className={styles.dropdownItem}
           >
-            <DropdownItem title={item.title} description={item.description} />
+            <DropdownItem
+              title={item.title}
+              description={item.description}
+              isOpen={openIndex === index}
+              onMouseEnter={() => {
+                if (!('ontouchstart' in window)) {
+                  setOpenIndex(index)
+                }
+              }}
+              onIconClick={(e) => {
+                e.stopPropagation()
+                setOpenIndex(openIndex === index ? -1 : index)
+              }}
+            />
           </div>
         ))}
       </div>
@@ -81,24 +96,30 @@ export const PlatformDropdownBlock: React.FC = () => {
   )
 }
 
-const DropdownItem: React.FC<{ title: string; description: string }> = ({
-  title,
-  description
-}) => {
-  const [isOpen, setIsOpen] = React.useState(false)
+interface DropdownItemProps {
+  title: string
+  description: string
+  isOpen: boolean
+  onMouseEnter: () => void
+  onIconClick: (e: React.MouseEvent) => void
+}
 
+const DropdownItem: React.FC<DropdownItemProps> = ({
+  title,
+  description,
+  isOpen,
+  onMouseEnter,
+  onIconClick
+}) => {
   return (
-    <div
-      className={styles.dropdownWrapper}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
+    <div className={styles.dropdownWrapper} onMouseEnter={onMouseEnter}>
       <div className={styles.dropdownHeader}>
         <span className={styles.title}>{title}</span>
         <img
           src={DropdownIcon}
           alt='Dropdown Icon'
           className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`}
+          onClick={onIconClick}
         />
       </div>
       <p

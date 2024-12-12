@@ -206,6 +206,7 @@ export const DateTimeModal: React.FC<IDateTimeModalProps> = ({
                   type='text'
                   placeholder='00'
                   maxLength={2}
+                  inputMode='numeric'
                   {...register('hours')}
                   onChange={handleHoursChange}
                 />
@@ -214,6 +215,7 @@ export const DateTimeModal: React.FC<IDateTimeModalProps> = ({
                   type='text'
                   placeholder='00'
                   maxLength={2}
+                  inputMode='numeric'
                   {...register('minutes')}
                   onChange={handleMinutesChange}
                 />
