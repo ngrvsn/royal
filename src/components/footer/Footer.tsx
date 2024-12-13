@@ -51,9 +51,7 @@ export const Footer: React.FC = () => {
             <a href='tel:+74997556677' className={styles.link}>
               8 (499) 755-66-77
             </a>
-            <a href='mailto:royalmarketing@info' className={styles.link}>
-              royalmarketing@info
-            </a>
+            <p className={styles.info}>royalmarketing@info</p>
           </div>
           <div className={styles.buttonsWrapper}>
             <a
@@ -120,9 +118,7 @@ export const Footer: React.FC = () => {
           <a href='tel:+74997556677' className={styles.link}>
             8 (499) 755-66-77
           </a>
-          <a href='mailto:royalmarketing@info' className={styles.link}>
-            royalmarketing@info
-          </a>
+          <p className={styles.info}>royalmarketing@info</p>
         </div>
         <button
           className={styles.demoButton}
